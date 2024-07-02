@@ -1,5 +1,7 @@
-export async function load({ params }) {
+import { sql } from "@vercel/postgres";
+
+export async function load({ params, locals }) {
   return {
-    content: `helloworld ${params.slug}`,
+    names: await sql`SELECT * from names`,
   };
 }
